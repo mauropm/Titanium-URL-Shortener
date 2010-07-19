@@ -26,8 +26,8 @@
 
 // Configure your account information here
 var req_url = 'http://api.bit.ly/v3/shorten';       // bit.ly request url for api
-var login 	= 'YOUR_LOGIN';                         // bit.ly api login
-var apiKey 	= 'YOUR_API_KEY';                       // bit.ly api key
+var login   = 'YOUR_LOGIN';                         // bit.ly api login
+var apiKey  = 'YOUR_API_KEY';                       // bit.ly api key
 
 // bit.ly service object
 var bitly_service = function (p_login, p_api_key, p_req_url)
