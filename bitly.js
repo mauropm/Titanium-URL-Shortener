@@ -68,9 +68,9 @@ var bitly_service = function (p_login, p_api_key, p_req_url)
 		} else {
 			// Oops, Something Happened
 			Ti.UI.createAlertDialog({
-                title: 'Error',
-                message: 'Oops, Something Happened'
-            }).show();
+				title: 'Error',
+				message: 'Oops, Something Happened'
+			}).show();
 		}
 		return client.responseText;
 	}
