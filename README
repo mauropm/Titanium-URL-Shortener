@@ -20,3 +20,6 @@ var short_url = bitly_url.shorten(URL_TO_SHORTEN);
 == Changelog ==
 = 1.0 =
 * Initial Release
+
+== Future ==
+* May look into integrating other url shortener services with the ability to choose your preferred service.
