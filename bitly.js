@@ -21,7 +21,7 @@
  * Ti.include('libs/bitly/bitly.js');
  * 
  * // Create bit.ly instance object
- * var bitly_url = new bitly_service(login,apiKey,req_url);
+ * var bitly_url = new bitly_service(login,apiKey);
  *
  * // Call shorten method for the url you want to shorten
  * var short_url = bitly_url.shorten(URL_TO_SHORTEN);
@@ -29,13 +29,15 @@
  */
 
 // Configure your account information here
-var req_url = 'http://api.bit.ly/v3/shorten';       // bit.ly request url for api
-var login   = 'YOUR_LOGIN';                         // bit.ly api login
-var apiKey  = 'YOUR_API_KEY';                       // bit.ly api key
+var req_url = 'http://api.bit.ly/v3/shorten';   // bit.ly request url for api
+var login   = null;                         	// bit.ly api login
+var apiKey  = null;                             // bit.ly api key
 
 // bit.ly service object
-var bitly_service = function (p_login, p_api_key, p_req_url)
+var bitly_service = function (p_login, p_api_key)
 {
+	login = p_login		// bit.ly api login
+	apiKey = p_api_key	// bit.ly api key
 	var url = null;		// URL to shorten
 	var format = null;	// Results Format
 	
