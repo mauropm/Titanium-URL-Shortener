@@ -59,9 +59,9 @@ var bitly_service = function (p_login, p_api_key, p_req_url)
 		// Debug
 		Ti.API.debug('Sending Requestion to: '+req_url+' with params: '+JSON.stringify(params));
 		
-		var client = Ti.Network.createHTTPClient();		// Create Titanium HTTP Client
-        client.open('POST', req_url, false);			// Open bit.ly url with POST
-        client.send(params);							// Send request with parameters
+		var client = Ti.Network.createHTTPClient();     // Create Titanium HTTP Client
+		client.open('POST', req_url, false);            // Open bit.ly url with POST
+		client.send(params);                            // Send request with parameters
 		if (client.status == 200) {
 			// Request Successful
 			Ti.API.debug('Request to bit.ly service successfull');
