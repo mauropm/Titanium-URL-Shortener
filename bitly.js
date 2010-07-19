@@ -20,7 +20,11 @@
  * // bit.ly Library
  * Ti.include('libs/bitly/bitly.js');
  * 
- * var short_url = bitly_url.shorten(post_url);
+ * // Create bit.ly instance object
+ * var bitly_url = new bitly_service(login,apiKey,req_url);
+ *
+ * // Call shorten method for the url you want to shorten
+ * var short_url = bitly_url.shorten(URL_TO_SHORTEN);
  *
  */
 
@@ -80,5 +84,3 @@ var bitly_service = function (p_login, p_api_key, p_req_url)
 		return eval('('+pResults+')');	// Eval the results
 	}
 }
-
-var bitly_url = new bitly_service(login,apiKey,req_url);	// Create bit.ly instance object
