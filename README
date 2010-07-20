@@ -5,21 +5,27 @@ Contributors: Tim Pearson (gouki9@gmail.com)
 A simple javascript class that will allow you to shorten a url using the bit.ly service.  bit.ly account is required.
 
 == Installation ==
-All thats needed is to include the class object and create an instance.
+1. Include the url shortener class.
+2. Create an instance of the class with the service you wish to use.
+3. If required, set any authentication items like login id and/or api key.
+4. Call the shorten method on the class for the url you wish to shorten.
 
-// bit.ly Library
-Ti.include('libs/bitly/bitly.js');
+// URL Shortener Library
+Ti.include('libs/url_shortener/url_shortener.js');
 
-// Create bit.ly instance object
-var bitly_url = new bitly_service(login,apiKey);
+// Create URL Shortener Instance
+var url_shortener =  new url_shortener(SERVICE);
+ 
+*** bit.ly ***
+url_shortener.setAuth(login, api_key);
+var short_url = url_shortener.shorten(URL_TO_SHORTEN);
 
-== Sample ==
-// Call shorten method for the url you want to shorten
-var short_url = bitly_url.shorten(URL_TO_SHORTEN);
+*** is.gd ***
+var short_url = url_shortener.shorten(URL_TO_SHORTEN);
 
 == Changelog ==
+= 1.01 =
+* Reworked the main code and added is.gd as an available service option
+
 = 1.0 =
 * Initial Release
-
-== Future ==
-* May look into integrating other url shortener services with the ability to choose your preferred service.
