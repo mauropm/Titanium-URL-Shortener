@@ -1,8 +1,9 @@
 === Titanium URL Shortener ===
 Contributors: Tim Pearson (gouki9@gmail.com)
+Contributors: Jean-Rene Auger (info@appwapp.com)
 
 == Description ==
-A simple javascript class that will allow you to shorten a url using the bit.ly service.  bit.ly account is required.
+A simple javascript class that will allow you to shorten a url using the bit.ly, is.gd or surl.me services.  bit.ly account is required if that service is to be used.
 
 == Installation ==
 1. Include the url shortener class.
@@ -23,7 +24,13 @@ var short_url = url_shortener.shorten(URL_TO_SHORTEN);
 *** is.gd ***
 var short_url = url_shortener.shorten(URL_TO_SHORTEN);
 
+*** surl.me ***
+var short_url = url_shortener.shorten(URL_TO_SHORTEN);
+
 == Changelog ==
+= 1.02 =
+* Added surl.me as an available service option
+
 = 1.01 =
 * Reworked the main code and added is.gd as an available service option
 
