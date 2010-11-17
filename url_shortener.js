@@ -16,6 +16,7 @@
  * Supported URL Shortening Services:
  * = bit.ly
  * = is.gd
+ * = surl.me
  *
  * Sample:
  * 
@@ -30,7 +31,9 @@
  *
  * *** is.gd ***
  * var short_url = url_shortener.shorten(URL_TO_SHORTEN);
- *
+  *
+ * *** surl.me ***
+ * var short_url = url_shortener.shorten(URL_TO_SHORTEN);*
  */
 
 var url_shortener = function(url_service)
@@ -50,7 +53,7 @@ var url_shortener = function(url_service)
 			{
 				login = p_login;
 				apiKey = p_api_key;
-			}
+			};
 			
 			this.shorten = function(p_url, p_format)
 			{
@@ -62,7 +65,7 @@ var url_shortener = function(url_service)
 				var short_url = results.data.url;
 				Ti.API.debug('Short URL: '+short_url);
 				return short_url;
-			}
+			};
 
 			this.makeRequest = function()
 			{		
@@ -90,12 +93,12 @@ var url_shortener = function(url_service)
 					}).show();
 				}
 				return client.responseText;
-			}
+			};
 
 			this.processResults = function(pResults)
 			{
 				return eval('('+pResults+')');	// Eval the results
-			}
+			};
 			break;
 		case 'is.gd':
 			Ti.API.debug('Using is.gd service');
@@ -109,7 +112,7 @@ var url_shortener = function(url_service)
 				var short_url = results;
 				Ti.API.debug('Short URL: '+short_url);
 				return short_url;
-			}
+			};
 			
 			this.makeRequest = function()
 			{
@@ -117,7 +120,7 @@ var url_shortener = function(url_service)
 				Ti.API.debug('Sending Requestion to: '+req_url+url);
 
 				var client = Ti.Network.createHTTPClient();    // Create Titanium HTTP Client
-				client.open('GET', req_url+url, false);        // Open bit.ly url with POST
+				client.open('GET', req_url+url, false);
 				client.send();                                 // Send request with parameters
 				if (client.status == 200) {
 					// Request Successful
@@ -131,7 +134,43 @@ var url_shortener = function(url_service)
 					}).show();
 				}
 				return client.responseText;
-			}
+			};
+			break;
+		case 'surl.me':
+			Ti.API.debug('Using surl.me service');
+			var req_url = 'http://surl.me/api-create.php?url=';   // surl.me request url for api
+			
+			this.shorten = function(p_url)
+			{
+				url = p_url;
+
+				var results = this.makeRequest();
+				var short_url = results;
+				Ti.API.debug('Short URL: '+short_url);
+				return short_url;
+			};
+			
+			this.makeRequest = function()
+			{
+				// Debug
+				Ti.API.debug('Sending Requestion to: '+req_url+url);
+
+				var client = Ti.Network.createHTTPClient();    // Create Titanium HTTP Client
+				client.open('GET', req_url+url, false);
+				client.send();                                 // Send request with parameters
+				if (client.status == 200) {
+					// Request Successful
+					Ti.API.debug('Request to surl.me service successfull');
+					Ti.API.debug(client.responseText);
+				} else {
+					// Oops, Something Happened
+					Ti.UI.createAlertDialog({
+						title: 'Error',
+						message: 'Oops, Something Happened'
+					}).show();
+				}
+				return client.responseText;
+			};
 			break;
 	}
-}
+};
